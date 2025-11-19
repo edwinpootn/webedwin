@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para la Enfermera de mi Corazón</title>
+    <style>
+        /* Estilos Generales y Fuentes Bonitas */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@300;400;500&display=swap');
+
+        :root {
+            --color-primario: #f8d7da; /* Rosa muy suave */
+            --color-secundario: #d1ecf1; /* Azul muy suave */
+            --color-acento: #f0ad4e; /* Dorado/Naranja suave */
+            --color-texto: #555;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-secundario) 100%);
+            color: var(--color-texto);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Sección Hero - La Portada */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            /* Cambia la URL por una foto de ustedes o una genérica bonita */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7); /* Overlay blanco para legibilidad */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            color: #d63384;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease 0.5s forwards;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            max-width: 600px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease 1s forwards;
+        }
+
+        .corazon-latido {
+            font-size: 3rem;
+            color: #dc3545;
+            margin-top: 20px;
+            animation: latido 1.5s infinite;
+            opacity: 0;
+            animation: fadeIn 1s ease 2s forwards, latido 1.5s infinite 2s;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* Secciones de Mensajes */
+        .seccion {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contenedor {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: #d63384;
+        }
+
+        .tarjeta-mensaje {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .tarjeta-mensaje.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tarjeta-mensaje p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .icono {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Galería de Recuerdos (opcional, si tienes fotos) */
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .item-galeria {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease;
+        }
+
+        .item-galeria.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .item-galeria img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .item-galeria:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Footer Final */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        footer p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #d63384;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Portada Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Para Mi Enfermera Favorita</h1>
+            <p>En cada gesto de cuidado, veo la fuerza de tu corazón y la pureza de tu amor.</p>
+            <div class="corazon-latido">❤️</div>
+        </div>
+    </section>
+
+    <!-- Sección 1: Reconocimiento a su Profesión -->
+    <section class="seccion" id="reconocimiento">
+        <div class="contenedor">
+            <h2>De Estudiante a Héroe</h2>
+            <div class="tarjeta-mensaje">
+                <span class="icono">👩‍⚕️</span>
+                <p>La universidad te dio el título, pero tu corazón siempre tuvo la vocación. Ahora, en la habitación de un hospital, estás dando la clase más importante de tu vida: la de amor inquebrantable.</p>
+                <p>Eres la enfermera que cualquier paciente soñaría tener. Tu mamá es la prueba viviente de eso.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 2: Reconocimiento a su Cansancio -->
+    <section class="seccion" id="fuerza">
+        <div class="contenedor">
+            <h2>Tu Fuerza No Pasa Desapercibida</h2>
+            <div class="tarjeta-mensaje">
+                <span class="icono">💪</span>
+                <p> Entiendo que estás agotada. Sé que las guardias parecen interminables, que las noches se vuelven pesadas y que, en ocasiones, el cansancio te supera </p>
+                <p>Aun así, quiero que recuerdes que cada vez que limpias, alimentas o brindas una palabra de apoyo, estás demostrando el amor de la forma más auténtica posible. Eres mucho más fuerte de lo que imaginas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 3: Mensajes de Amor -->
+    <section class="seccion" id="amor">
+        <div class="contenedor">
+            <h2>Mi Corazón Está Contigo</h2>
+            <div class="tarjeta-mensaje">
+                <span class="icono">🌹</span>
+                <p>Mientras tú cuidas de tu mamá, yo quiero cuidar de ti. No siempre puedo estar físicamente, pero mi corazón no se separa de ti nunca.</p>
+                <p>Eres mi inspiración, ver tu dedicación y amor solo me hace ver la persona increíble y valiosa que eres.</p>
+            </div>
+            <!-- Galería de Fotos (OPCIONAL - Reemplaza con sus fotos) -->
+            <div class="galeria">
+                <div class="item-galeria"><img src="1.jpg" alt="Recuerdo 1"></div>
+                <div class="item-galeria"><img src="2.jpeg" alt="Recuerdo 2"></div>
+                <div class="item-galeria"><img src="3.jpeg" alt="Recuerdo 3"></div>
+                <!-- Añade más fotos -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Final -->
+    <footer>
+        <p>Te quiero mucho dinobebé.</p>
+    </footer>
+
+    <script>
+        // JavaScript simple para las animaciones al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.tarjeta-mensaje, .item-galeria').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
