@@ -1,274 +1,466 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para mi enfermera favorita</title>
-    <style>
-        /* Estilos Generales y Fuentes Bonitas */
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@300;400;500&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100 razones para amarte, Milca 🌻</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold-1:#FBDA9A;
+    --gold-2:#F2A93B;
+    --coral:#E37B6B;
+    --plum:#7C5478;
+    --night:#262244;
+    --ink-dark:#2E2113;
+    --ink-light:#FBF3E2;
+    --ink-dark-soft:#5A4A38;
+    --ink-light-soft:#D9CFE8;
+    --accent-gold:#C77D2E;
+  }
 
-        :root {
-            --color-primario: #f8d7da; /* Rosa muy suave */
-            --color-secundario: #d1ecf1; /* Azul muy suave */
-            --color-acento: #f0ad4e; /* Dorado/Naranja suave */
-            --color-texto: #555;
-        }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Work Sans', sans-serif;
+    color:var(--ink-dark);
+    background:linear-gradient(180deg,
+      var(--gold-1) 0%,
+      var(--gold-2) 16%,
+      var(--coral) 44%,
+      var(--plum) 72%,
+      var(--night) 100%);
+    transition:color .4s ease;
+    overflow-x:hidden;
+  }
+  body.phase-dark{color:var(--ink-light);}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 24px;
+  }
 
-        body {
-            font-family: 'Quicksand', sans-serif;
-            background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-secundario) 100%);
-            color: var(--color-texto);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  /* ---------- progress rail ---------- */
+  #progress{
+    position:fixed;
+    top:0; left:0; right:0;
+    height:3px;
+    background:rgba(46,33,19,.12);
+    z-index:50;
+  }
+  #progress-fill{
+    height:100%;
+    width:0%;
+    background:var(--accent-gold);
+    transition:width .08s linear;
+  }
+  #progress-badge{
+    position:fixed;
+    top:14px; right:16px;
+    z-index:50;
+    font-family:'Caveat',cursive;
+    font-weight:700;
+    font-size:1.15rem;
+    color:var(--ink-dark);
+    background:rgba(255,248,236,.75);
+    backdrop-filter:blur(3px);
+    padding:2px 12px 4px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    transition:color .4s ease, background .4s ease;
+  }
+  body.phase-dark #progress-badge{
+    color:var(--ink-light);
+    background:rgba(38,34,68,.55);
+  }
+  #progress-badge svg{width:16px;height:16px;flex:none;}
 
-        /* Sección Hero - La Portada */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            background: url('https://constanzadigital.com/noticias/wp-content/uploads/2025/05/pexels-photo-4386466-4386466.jpg') no-repeat center center/cover;
-            /* Cambia la URL por una foto de ustedes o una genérica bonita */
-        }
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 24px 60px;
+  }
+  .hero-art{width:min(230px, 60vw); height:auto; margin-bottom:8px;}
+  .eyebrow-note{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:.95rem;
+    color:var(--ink-dark-soft);
+    margin:18px 0 6px;
+  }
+  h1{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+    font-size:clamp(2.6rem, 9vw, 4.2rem);
+    line-height:1.05;
+    margin:0;
+    color:var(--accent-gold);
+  }
+  h1 .name{
+    display:block;
+    font-size:1.15em;
+    color:var(--ink-dark);
+  }
+  .subtitle{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.05rem;
+    max-width:26ch;
+    margin:20px auto 0;
+    color:var(--ink-dark-soft);
+  }
+  .scroll-cue{
+    margin-top:56px;
+    font-family:'Work Sans',sans-serif;
+    font-size:.8rem;
+    letter-spacing:.02em;
+    color:var(--ink-dark-soft);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  }
+  .scroll-cue svg{width:14px;height:20px;animation:bob 2.2s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+  @media (prefers-reduced-motion: reduce){
+    .scroll-cue svg{animation:none;}
+    html{scroll-behavior:auto;}
+  }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.7); /* Overlay blanco para legibilidad */
-        }
+  /* ---------- chapters ---------- */
+  .chapter{padding:20px 0 8px;}
+  .chapter-head{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.5rem;
+    margin:0 0 6px;
+  }
+  .chapter-sub{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:.98rem;
+    color:inherit;
+    opacity:.75;
+    margin:0 0 44px;
+  }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+  .reason{
+    display:flex;
+    gap:14px;
+    align-items:baseline;
+    padding:14px 0;
+    border-top:1px solid currentColor;
+    border-color:rgba(128,128,128,.18);
+  }
+  .reason:first-of-type{border-top:none;}
+  .reason .n{
+    flex:none;
+    width:2.4rem;
+    text-align:right;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.05rem;
+    color:var(--accent-gold);
+    font-variant-numeric:oldstyle-nums;
+  }
+  body.phase-dark .reason .n{color:var(--gold-1);}
+  .reason p{
+    margin:0;
+    font-size:1.02rem;
+    line-height:1.5;
+    max-width:52ch;
+  }
 
-        .hero h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4.5rem;
-            margin-bottom: 20px;
-            color: #d63384;
-            opacity: 0;
-            animation: fadeInUp 1.5s ease 0.5s forwards;
-        }
+  /* ---------- dividers ---------- */
+  .divider{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:52px 24px 40px;
+  }
+  .divider svg{width:min(220px,70%); height:auto; opacity:.85;}
+  .divider p{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:1.05rem;
+    max-width:30ch;
+    margin:18px 0 0;
+    opacity:.85;
+  }
 
-        .hero p {
-            font-size: 1.5rem;
-            font-weight: 300;
-            max-width: 600px;
-            opacity: 0;
-            animation: fadeInUp 1.5s ease 1s forwards;
-        }
+  /* ---------- closing ---------- */
+  .closing{
+    padding:70px 24px 110px;
+    text-align:left;
+  }
+  .closing-mark{
+    width:52px;height:52px;margin:0 auto 26px;display:block;
+  }
+  .closing p{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:1.18rem;
+    line-height:1.65;
+    color:var(--ink-light);
+    max-width:46ch;
+    margin:0 auto 22px;
+  }
+  .signoff{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+    font-size:2rem;
+    color:var(--gold-1);
+    text-align:center;
+    margin-top:36px;
+  }
 
-        .corazon-latido {
-            font-size: 3rem;
-            color: #dc3545;
-            margin-top: 20px;
-            animation: latido 1.5s infinite;
-            opacity: 0;
-            animation: fadeIn 1s ease 2s forwards, latido 1.5s infinite 2s;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        @keyframes latido {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-
-        /* Secciones de Mensajes */
-        .seccion {
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .contenedor {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            margin-bottom: 40px;
-            color: #d63384;
-        }
-
-        .tarjeta-mensaje {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 20px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .tarjeta-mensaje.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .tarjeta-mensaje p {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-
-        .icono {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        /* Galería de Recuerdos (opcional, si tienes fotos) */
-        .galeria {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 30px;
-        }
-
-        .item-galeria {
-            width: 150px;
-            height: 150px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.8s ease;
-        }
-
-        .item-galeria.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .item-galeria img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .item-galeria:hover img {
-            transform: scale(1.1);
-        }
-
-        /* Footer Final */
-        footer {
-            padding: 40px 20px;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.05);
-        }
-
-        footer p {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2rem;
-            color: #d63384;
-        }
-    </style>
+  footer{
+    text-align:center;
+    font-size:.78rem;
+    color:var(--ink-light-soft);
+    padding-bottom:36px;
+  }
+</style>
 </head>
 <body>
 
-    <!-- Portada Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Para Mi Enfermera Favorita</h1>
-            <p>En cada gesto de cuidado, veo la fuerza de tu corazón y la pureza de tu amor.</p>
-            <div class="corazon-latido">❤️</div>
-        </div>
-    </section>
+<div id="progress"><div id="progress-fill"></div></div>
+<div id="progress-badge">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 20c2-1 3-3 3-5 2 1 3-1 3-3 2 1.5 3-.5 3-2.5 2 1 3-1.5 3-3.5 2 1 4 0 6-2"/></svg>
+  <span id="progress-count">1</span> / 100
+</div>
 
-    <!-- Sección 1: Reconocimiento a su Profesión -->
-    <section class="seccion" id="reconocimiento">
-        <div class="contenedor">
-            <h2>De Estudiante a Héroe</h2>
-            <div class="tarjeta-mensaje">
-                <span class="icono">👩‍⚕️</span>
-                <p>La universidad te dio el título, pero tu corazón siempre tuvo la vocación. Ahora, en la habitación de un hospital, estás dando la clase más importante de tu vida: la de amor inquebrantable.</p>
-                <p>Eres la enfermera que cualquier paciente soñaría tener. Tu mamá es la prueba viviente de eso.</p>
-            </div>
-        </div>
-    </section>
+<header class="hero">
+  <svg class="hero-art" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g>
+      <!-- petals -->
+      <g fill="#C77D2E">
+        <ellipse cx="110" cy="46" rx="16" ry="30"/>
+        <ellipse cx="110" cy="46" rx="16" ry="30" transform="rotate(30 110 90)"/>
+        <ellipse cx="110" cy="46" rx="16" ry="30" transform="rotate(60 110 90)"/>
+        <ellipse cx="110" cy="46" rx="16" ry="30" transform="rotate(90 110 90)"/>
+        <ellipse cx="110" cy="46" rx="16" ry="30" transform="rotate(120 110 90)"/>
+        <ellipse cx="110" cy="46" rx="16" ry="30" transform="rotate(150 110 90)"/>
+        <ellipse cx="110" cy="46" rx="16" ry="30" transform="rotate(180 110 90)"/>
+        <ellipse cx="110" cy="46" rx="16" ry="30" transform="rotate(210 110 90)"/>
+        <ellipse cx="110" cy="46" rx="16" ry="30" transform="rotate(240 110 90)"/>
+        <ellipse cx="110" cy="46" rx="16" ry="30" transform="rotate(270 110 90)"/>
+        <ellipse cx="110" cy="46" rx="16" ry="30" transform="rotate(300 110 90)"/>
+        <ellipse cx="110" cy="46" rx="16" ry="30" transform="rotate(330 110 90)"/>
+      </g>
+      <circle cx="110" cy="90" r="28" fill="#5A3A1E"/>
+      <g fill="#F2A93B" opacity=".9">
+        <circle cx="100" cy="82" r="2.4"/><circle cx="110" cy="80" r="2.4"/><circle cx="120" cy="83" r="2.4"/>
+        <circle cx="96" cy="92" r="2.4"/><circle cx="107" cy="90" r="2.4"/><circle cx="117" cy="92" r="2.4"/><circle cx="124" cy="94" r="2.4"/>
+        <circle cx="101" cy="100" r="2.4"/><circle cx="112" cy="100" r="2.4"/><circle cx="120" cy="102" r="2.4"/>
+      </g>
+      <path d="M110 118 C108 150, 116 158, 108 188" stroke="#7A9A5A" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <!-- baby dino peeking -->
+      <g transform="translate(128,158)">
+        <path d="M0 40 C-2 20, 6 4, 24 4 C34 4, 40 12, 38 20 C48 18, 54 24, 50 32 C58 34, 58 44, 50 46 L34 46 C30 52, 20 54, 12 50 C6 54, -2 50, 0 40 Z" fill="#7A9A5A"/>
+        <circle cx="30" cy="16" r="2.6" fill="#2E2113"/>
+        <path d="M8 46 L6 56 M18 48 L17 57 M28 47 L28 56" stroke="#5A7A3E" stroke-width="3" stroke-linecap="round"/>
+        <path d="M40 18 L48 14 M42 24 L50 22" stroke="#5A7A3E" stroke-width="3" stroke-linecap="round"/>
+      </g>
+    </g>
+  </svg>
+  <p class="eyebrow-note">para ti, cielo</p>
+  <h1>100 razones<span class="name">para amarte, Milca</span></h1>
+  <p class="subtitle">por si alguna vez piensas que eres difícil de amar.</p>
+  <div class="scroll-cue">
+    desliza
+    <svg viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 1v16M2 13l5 5 5-5"/></svg>
+  </div>
+</header>
 
-    <!-- Sección 2: Reconocimiento a su Cansancio -->
-    <section class="seccion" id="fuerza">
-        <div class="contenedor">
-            <h2>Tu Fuerza No Pasa Desapercibida</h2>
-            <div class="tarjeta-mensaje">
-                <span class="icono">💪</span>
-                <p> Entiendo que estás agotada. Sé que las guardias parecen interminables, que las noches se vuelven pesadas y que, en ocasiones, el cansancio te supera </p>
-                <p>Aun así, quiero que recuerdes que cada vez que limpias, alimentas o brindas una palabra de apoyo, estás demostrando el amor de la forma más auténtica posible. Eres mucho más fuerte de lo que imaginas.</p>
-            </div>
-        </div>
-    </section>
+<main class="wrap">
+  <section class="chapter" id="ch1">
+    <h2 class="chapter-head">Quién eres</h2>
+    <p class="chapter-sub">lo que veo cuando te miro, y lo que tú a veces no ves</p>
+    <div class="reason"><span class="n">1</span><p>Porque tienes un corazón noble que perdona más rápido de lo que crees.</p></div>
+<div class="reason"><span class="n">2</span><p>Porque detrás de tu enojo siempre hay alguien que en el fondo solo quiere hacer las cosas bien.</p></div>
+<div class="reason"><span class="n">3</span><p>Porque tu sensibilidad no es un defecto, es prueba de que sientes todo con intensidad.</p></div>
+<div class="reason"><span class="n">4</span><p>Porque cuando te enojas es porque te importa, no porque no te importe.</p></div>
+<div class="reason"><span class="n">5</span><p>Porque no te das cuenta de lo especial que eres, y yo sí.</p></div>
+<div class="reason"><span class="n">6</span><p>Porque a pesar de no verte a ti misma siempre con claridad, yo veo en ti a alguien admirable.</p></div>
+<div class="reason"><span class="n">7</span><p>Porque tienes la valentía de seguir siendo tú misma aunque no sea fácil.</p></div>
+<div class="reason"><span class="n">8</span><p>Por tu corazón de pollo.</p></div>
+<div class="reason"><span class="n">9</span><p>Porque eres honesta, incluso cuando la verdad incomoda.</p></div>
+<div class="reason"><span class="n">10</span><p>Porque puedes aprender de tus días difíciles en lugar de quedarte estancada en ellos.</p></div>
+<div class="reason"><span class="n">11</span><p>Porque elegiste una profesión donde tu trabajo es literalmente cuidar la vida de otros.</p></div>
+<div class="reason"><span class="n">12</span><p>Porque cuando operaron a tus papás, tú fuiste su enfermera, su fuerza y su calma.</p></div>
+<div class="reason"><span class="n">13</span><p>Porque sostienes la mano de desconocidos en sus peores momentos.</p></div>
+<div class="reason"><span class="n">14</span><p>Porque tus manos de dinobebé t-rex también saben curar.</p></div>
+<div class="reason"><span class="n">15</span><p>Porque das lo mejor de ti aun cuando estás cansada.</p></div>
+<div class="reason"><span class="n">16</span><p>Porque tu vocación de servicio no se queda en el hospital, también en cómo tratas a quienes amas.</p></div>
+<div class="reason"><span class="n">17</span><p>Porque sacrificas horas de sueño por el bienestar de otras personas.</p></div>
+<div class="reason"><span class="n">18</span><p>Porque en tus turnos más difíciles sigues encontrando la manera de ser amable.</p></div>
+<div class="reason"><span class="n">19</span><p>Porque cuidaste de tu propia familia como cuidas de tus pacientes, con amor.</p></div>
+<div class="reason"><span class="n">20</span><p>Porque ser enfermera no es solo tu trabajo, es una extensión de quién eres.</p></div>
+<div class="reason"><span class="n">21</span><p>Porque le enseñaste a cantar a niños y hermanos en la escuela bíblica de vacaciones con paciencia.</p></div>
+<div class="reason"><span class="n">22</span><p>Porque compartes tu fe y tu voz sin esperar aplausos.</p></div>
+<div class="reason"><span class="n">23</span><p>Porque tienes la generosidad de enseñar a quienes recién empiezan.</p></div>
+<div class="reason"><span class="n">24</span><p>Porque tu voz consuela, ya sea cantando o simplemente hablando.</p></div>
+<div class="reason"><span class="n">25</span><p>Porque te arreglas las cejas y las pestañas con tanto cuidado, aunque para mí ya eres hermosa sin necesitar nada de eso.</p></div>
+<div class="reason"><span class="n">26</span><p>Porque tu sonrisa ilumina cualquier lugar en el que estés.</p></div>
+<div class="reason"><span class="n">27</span><p>Porque cuando sonríes de verdad, el mundo se detiene un segundo para mí.</p></div>
+<div class="reason"><span class="n">28</span><p>Porque tienes una forma de reír que se queda en mi memoria.</p></div>
+<div class="reason"><span class="n">29</span><p>Porque te queda espectacular el vestido azul y los tacones beiges.</p></div>
+<div class="reason"><span class="n">30</span><p>Porque me encanta la manera en que caminas segura de ti misma, aunque no siempre lo sientas así.</p></div>
+<div class="reason"><span class="n">31</span><p>Porque has pasado por momentos que hubieran quebrado a cualquiera, y aún así seguiste de pie.</p></div>
+<div class="reason"><span class="n">32</span><p>Porque no dejaste que tu pasado decidiera quién ibas a ser.</p></div>
+<div class="reason"><span class="n">33</span><p>Porque tu fuerza no es ruidosa, pero es real.</p></div>
+<div class="reason"><span class="n">34</span><p>Porque cada vez que la vida te derribó, te levantaste y seguiste.</p></div>
+<div class="reason"><span class="n">35</span><p>Porque tienes historia de superación.</p></div>
+<div class="reason"><span class="n">36</span><p>Porque no usas lo que sufriste como excusa para tratar mal a los demás.</p></div>
+<div class="reason"><span class="n">37</span><p>Porque incluso herida, sigues eligiendo tener un corazón bueno.</p></div>
+<div class="reason"><span class="n">38</span><p>Porque te gustan los girasoles, y desde que lo sé no puedo ver uno sin pensar en ti.</p></div>
+<div class="reason"><span class="n">39</span><p>Porque eres como un girasol: buscas la luz incluso en tus días grises.</p></div>
+<div class="reason"><span class="n">40</span><p>Porque tu forma de enojarte por cosas pequeñas también me hace sonreír, porque es parte de ti.</p></div>
+<div class="reason"><span class="n">41</span><p>Porque aunque no estemos de acuerdo nos respetamos.</p></div>
+<div class="reason"><span class="n">42</span><p>Porque me haces querer ser más paciente.</p></div>
+<div class="reason"><span class="n">43</span><p>Porque fuimos juntos al concierto de El Trono de México y verte disfrutar tu música de banda fue una de mis noches favoritas.</p></div>
+<div class="reason"><span class="n">44</span><p>Porque me enseñas que amar a alguien también es amar lo difícil de esa persona.</p></div>
+<div class="reason"><span class="n">45</span><p>Porque te encantan los atardeceres frente al mar, y a mí también.</p></div>
+<div class="reason"><span class="n">46</span><p>Porque eres como un atardecer en el mar, una canción de Coldplay o una vista amarilla de Izamal.</p></div>
+<div class="reason"><span class="n">47</span><p>Porque eres más chica, eres una niñita para mí, pero también una hermosa mujer.</p></div>
+<div class="reason"><span class="n">48</span><p>Porque elijo amarte con tus luces y tus sombras, no solo con la mitad fácil.</p></div>
+<div class="reason"><span class="n">49</span><p>Porque quiero llevarte a la playa a buscarte caracoles y darte girasoles.</p></div>
+<div class="reason"><span class="n">50</span><p>Porque eres un cielito lindo.</p></div>
+  </section>
+</main>
 
-    <!-- Sección 3: Mensajes de Amor -->
-    <section class="seccion" id="amor">
-        <div class="contenedor">
-            <h2>Mi Corazón Está Contigo</h2>
-            <div class="tarjeta-mensaje">
-                <span class="icono">🌹</span>
-                <p>Mientras tú cuidas de tu mamá, yo quiero cuidar de ti. No siempre puedo estar físicamente, pero mi corazón no se separa de ti nunca.</p>
-                <p>Eres mi inspiración, ver tu dedicación y amor solo me hace ver la mujer increíble y valiosa que eres.</p>
-            </div>
-            <!-- Galería de Fotos (OPCIONAL - Reemplaza con sus fotos) -->
-            <div class="galeria">
-                <div class="item-galeria"><img src="1.jpg" alt="Recuerdo 1"></div>
-                <div class="item-galeria"><img src="2.jpeg" alt="Recuerdo 2"></div>
-                <div class="item-galeria"><img src="3.jpeg" alt="Recuerdo 3"></div>
-                <!-- Añade más fotos -->
-            </div>
-        </div>
-    </section>
+<div class="divider">
+  <svg viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0 30 H60 L72 8 L86 52 L98 20 L106 30 H220" stroke="#2E2113" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <p>tu corazón, contando cada latido</p>
+</div>
 
-    <!-- Sección Final -->
-    <footer>
-        <p>Te quiero mucho dinobebé.</p>
-    </footer>
+<main class="wrap">
+  <section class="chapter" id="ch2">
+    <h2 class="chapter-head">Lo que sostiene todo esto</h2>
+    <p class="chapter-sub">los días comunes, los turnos largos, las cosas pequeñas</p>
+    <div class="reason"><span class="n">51</span><p>Porque tus ojos dicen lo que a veces las palabras no.</p></div>
+<div class="reason"><span class="n">52</span><p>Porque amas a los tuyos.</p></div>
+<div class="reason"><span class="n">53</span><p>Porque proteges a quienes quieres como si fueran lo más valioso del mundo, porque lo son.</p></div>
+<div class="reason"><span class="n">54</span><p>Porque tienes un buen sentido del humor cuando quieres.</p></div>
+<div class="reason"><span class="n">55</span><p>Porque tu determinación es silenciosa pero inquebrantable.</p></div>
+<div class="reason"><span class="n">56</span><p>Porque cuando te equivocas, aunque cueste verlo, al final tienes la nobleza de intentar mejorar.</p></div>
+<div class="reason"><span class="n">57</span><p>Porque tu fe no la impones, la vives.</p></div>
+<div class="reason"><span class="n">58</span><p>Porque los niños confían en ti fácilmente, y eso dice mucho de tu corazón.</p></div>
+<div class="reason"><span class="n">59</span><p>Porque tienes la valentía de mostrarte vulnerable, aunque sea difícil para ti.</p></div>
+<div class="reason"><span class="n">60</span><p>Porque te gusta salir en tu motito sintiéndote libre, y verte así me encanta.</p></div>
+<div class="reason"><span class="n">61</span><p>Porque tu forma de cuidar a otros nunca pide reconocimiento.</p></div>
+<div class="reason"><span class="n">62</span><p>Porque tienes días agotadores y aun así encuentras energía.</p></div>
+<div class="reason"><span class="n">63</span><p>Porque tu enojo dura poco.</p></div>
+<div class="reason"><span class="n">64</span><p>Porque me haces reflexionar sobre lo que realmente importa en la vida.</p></div>
+<div class="reason"><span class="n">65</span><p>Porque tu manera de caminar, de hablar, de reír, es completamente tuya y nadie la hace igual.</p></div>
+<div class="reason"><span class="n">66</span><p>Porque no necesitas que te digan cien razones para saber que vales, aunque yo quiera decírtelas de todas formas.</p></div>
+<div class="reason"><span class="n">67</span><p>Porque tu esfuerzo diario, aunque nadie lo note, yo sí lo veo y lo valoro.</p></div>
+<div class="reason"><span class="n">68</span><p>Porque cuando estás triste, sigues teniendo fuerza para no rendirte.</p></div>
+<div class="reason"><span class="n">69</span><p>Porque conviertes los días comunes en algo que vale la pena recordar.</p></div>
+<div class="reason"><span class="n">70</span><p>Porque me haces querer ser mejor sin que tú lo estés pidiendo.</p></div>
+<div class="reason"><span class="n">71</span><p>Porque tu lealtad hacia quienes amas es de las cosas más bonitas que una persona pueda tener.</p></div>
+<div class="reason"><span class="n">72</span><p>Porque tu voz al cantar transmite algo que las palabras solas no logran.</p></div>
+<div class="reason"><span class="n">73</span><p>Porque te preocupas genuinamente por el bienestar de la gente, no solo de palabra.</p></div>
+<div class="reason"><span class="n">74</span><p>Porque tu carácter fuerte también te ha ayudado a salir adelante en los momentos más difíciles.</p></div>
+<div class="reason"><span class="n">75</span><p>Porque cuando confías en alguien, lo haces con todo tu corazón.</p></div>
+<div class="reason"><span class="n">76</span><p>Porque eres agradecida con Dios.</p></div>
+<div class="reason"><span class="n">77</span><p>Porque detrás de tu carácter hay una ternura que solo unos pocos conocen.</p></div>
+<div class="reason"><span class="n">78</span><p>Porque nunca dejas de intentar ser mejor persona, aunque el camino sea difícil.</p></div>
+<div class="reason"><span class="n">79</span><p>Porque tu manera de disfrutar las cosas simples me recuerda que la felicidad está en los detalles.</p></div>
+<div class="reason"><span class="n">80</span><p>Porque tienes el valor de admitir cuando algo te duele, en lugar de fingir que no pasa nada.</p></div>
+<div class="reason"><span class="n">81</span><p>Porque tu presencia siempre deja huella.</p></div>
+<div class="reason"><span class="n">82</span><p>Porque tu manera de amar es real, sin filtros ni máscaras.</p></div>
+<div class="reason"><span class="n">83</span><p>Porque sabes lo que es luchar, y por eso valoras lo que tienes.</p></div>
+<div class="reason"><span class="n">84</span><p>Porque tu espíritu de servicio va más allá del hospital, llega hasta tu casa y tu gente.</p></div>
+<div class="reason"><span class="n">85</span><p>Porque tienes un lado maternal que se nota en cómo cuidas a Pau y hasta a Gordo, y a todos los que amas.</p></div>
+<div class="reason"><span class="n">86</span><p>Porque tu risa es contagiosa, incluso cuando intento no reírme contigo.</p></div>
+<div class="reason"><span class="n">87</span><p>Porque tienes la capacidad de convertir un mal día en una razón para seguir adelante.</p></div>
+<div class="reason"><span class="n">88</span><p>Porque a pesar de lo agotador que dices que es lidiar contigo, para mí siempre ha valido la pena.</p></div>
+<div class="reason"><span class="n">89</span><p>Porque tu forma de amar, aunque intensa, es sincera y sin dobles intenciones.</p></div>
+<div class="reason"><span class="n">90</span><p>Porque tienes una fortaleza que muchas veces ni tú misma reconoces.</p></div>
+<div class="reason"><span class="n">91</span><p>Porque me enseñas que el amor también es paciencia, comprensión y elegir quedarse.</p></div>
+<div class="reason"><span class="n">92</span><p>Porque tu manera de disculparte, aunque cueste, muestra la nobleza de tu corazón.</p></div>
+<div class="reason"><span class="n">93</span><p>Porque sabes convertir el dolor del pasado en fuerza para el presente.</p></div>
+<div class="reason"><span class="n">94</span><p>Porque tu determinación como enfermera refleja tu determinación como persona.</p></div>
+<div class="reason"><span class="n">95</span><p>Porque tu belleza no está solo en tu sonrisa, está en cómo tratas a los demás.</p></div>
+<div class="reason"><span class="n">96</span><p>Porque a veces me acompañas a comer comida grasosa.</p></div>
+<div class="reason"><span class="n">97</span><p>Por tu mirada, tu rostro, tu sonrisa, tu cabello, tu cielito lindo.</p></div>
+  </section>
+</main>
 
-    <script>
-        // JavaScript simple para las animaciones al hacer scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        });
+<div class="divider">
+  <svg viewBox="0 0 220 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0 42 C 30 20, 55 20, 80 40 C 105 60, 130 60, 155 40 C 180 20, 205 20, 220 40" stroke="#F3E7EF" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <circle cx="185" cy="14" r="12" fill="#FBDA9A" opacity=".9"/>
+  </svg>
+  <p style="color:#F3E7EF">y el mar, guardando el resto</p>
+</div>
 
-        document.querySelectorAll('.tarjeta-mensaje, .item-galeria').forEach((el) => {
-            observer.observe(el);
-        });
-    </script>
+<main class="wrap">
+  <section class="chapter" id="ch3">
+    <h2 class="chapter-head" style="color:var(--ink-light)">Nosotros</h2>
+    <p class="chapter-sub" style="color:var(--ink-light)">lo último, que en realidad es lo primero</p>
+    <div class="reason"><span class="n">98</span><p>Porque elijo amarte en tus días buenos y en tus días difíciles por igual.</p></div>
+<div class="reason"><span class="n">99</span><p>Porque no necesito 100 razones para amarte, pero aquí están.</p></div>
+<div class="reason"><span class="n">100</span><p>Porque simplemente ERES TÚ, y por ser tú, ya es razón suficiente. 🌻</p></div>
+  </section>
+
+  <div class="closing">
+    <svg class="closing-mark" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="#FBDA9A"><ellipse cx="30" cy="14" rx="6" ry="12"/><ellipse cx="30" cy="14" rx="6" ry="12" transform="rotate(45 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="12" transform="rotate(90 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="12" transform="rotate(135 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="12" transform="rotate(180 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="12" transform="rotate(225 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="12" transform="rotate(270 30 30)"/><ellipse cx="30" cy="14" rx="6" ry="12" transform="rotate(315 30 30)"/></g>
+      <circle cx="30" cy="30" r="9" fill="#C77D2E"/>
+    </svg>
+    <p>No sé si tenga las respuestas a todo, pero siempre te voy a escuchar, y nunca voy a invalidar lo que sientas, aunque yo lo vea distinto. A veces las personas que te rodean te aman mucho pero no siempre lo dicen con palabras.</p>
+    <p>Yo sí quise decírtelo, las cien veces.</p>
+    <p class="signoff">te amo mucho 🌻</p>
+  </div>
+</main>
+
+<footer>hecho para Milca, una razón a la vez</footer>
+
+<script>
+(function(){
+  var fill = document.getElementById('progress-fill');
+  var count = document.getElementById('progress-count');
+  var body = document.body;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function onScroll(){
+    var doc = document.documentElement;
+    var scrollTop = window.scrollY || doc.scrollTop;
+    var max = doc.scrollHeight - doc.clientHeight;
+    var pct = max > 0 ? Math.min(1, Math.max(0, scrollTop / max)) : 0;
+
+    fill.style.width = (pct * 100) + '%';
+    count.textContent = Math.max(1, Math.min(100, Math.round(pct * 100)));
+
+    if(pct > 0.54){ body.classList.add('phase-dark'); }
+    else { body.classList.remove('phase-dark'); }
+  }
+
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
 
 </body>
-
 </html>
-
